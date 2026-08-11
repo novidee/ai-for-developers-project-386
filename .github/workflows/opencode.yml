@@ -25,6 +25,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Debug workflow inputs
+        run: |
+          echo "Workflow commit: $GITHUB_SHA"
+          echo "Workflow ref: $GITHUB_REF"
+          echo "Event: $GITHUB_EVENT_NAME"
+
       - name: Run opencode
         uses: anomalyco/opencode/github@github-v1.2.19
         env:
