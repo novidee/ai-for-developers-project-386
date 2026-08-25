@@ -3,12 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "compile": "tsp compile ."
+    "compile": "tsp compile .",
+    "mock": "npm run compile && prism mock tsp-output/schema/openapi.yaml --host 0.0.0.0 --port 4010 --cors",
+    "ui:install": "npm --prefix ui install",
+    "ui:dev": "npm --prefix ui run dev",
+    "ui:build": "npm --prefix ui run build"
   },
   "dependencies": {
     "@typespec/compiler": "1.14.0",
     "@typespec/http": "1.14.0",
     "@typespec/openapi": "1.14.0",
     "@typespec/openapi3": "1.14.0"
+  },
+  "devDependencies": {
+    "@stoplight/prism-cli": "5.14.2"
+  },
+  "overrides": {
+    "@stoplight/prism-core": "5.15.11",
+    "@stoplight/prism-http": "5.15.11",
+    "@stoplight/prism-http-server": "5.15.11"
   }
 }
