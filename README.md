@@ -56,3 +56,33 @@ npm run compile
 npm run backend:build
 npm run ui:build
 ```
+
+## Интеграционные сценарии
+
+Playwright-проверки фиксируют три пользовательских сценария:
+
+1. `guest-books-slot.spec.ts`: гость выбирает формат и свободный слот, подтверждает бронирование, после чего владелец видит созданную запись.
+2. `owner-creates-event-type.spec.ts`: владелец создаёт тип встречи и видит его в таблице.
+3. `new-event-type-has-slots.spec.ts`: созданный владельцем тип появляется у гостя с автоматически сгенерированными доступными слотами.
+
+Playwright запускает реальные backend и frontend из `playwright.config.ts`. Перед первым локальным запуском установите Chromium:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+Для отладки теста в интерактивном режиме используйте `npm run test:e2e:ui`. В CI сценарий запускается workflow `.github/workflows/e2e.yml` для pull request и изменений в `main`; HTML-отчёт сохраняется как artifact.
+
+## Коммиты и релизы
+
+Все коммиты, включая созданные AI-агентами, должны соответствовать [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
+
+- `feat: add booking reminder` — новая функциональность, следующая minor-версия;
+- `fix: prevent duplicate booking` — исправление, следующая patch-версия;
+- `feat!: change booking API` — несовместимое изменение, следующая major-версия;
+- `docs:`, `test:`, `ci:`, `chore:` и другие стандартные типы — изменения без автоматического повышения версии.
+
+Workflow `.github/workflows/release-please.yml` анализирует коммиты после каждого push в `main`. Он создаёт или обновляет release-PR с новой версией в `package.json` и `package-lock.json` и с автоматически сформированным `CHANGELOG.md`. После слияния release-PR создаются тег и GitHub Release.
+
+Чтобы workflow мог открыть release-PR через `GITHUB_TOKEN`, включите в репозитории настройку `Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests`. После слияния первого Conventional Commit в `main` проверьте запуск `release-please` во вкладке Actions и появление release-PR.
