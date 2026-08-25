@@ -5,6 +5,10 @@
   "scripts": {
     "compile": "tsp compile .",
     "mock": "npm run compile && prism mock tsp-output/schema/openapi.yaml --host 0.0.0.0 --port 4010 --cors",
+    "backend:install": "npm --prefix backend install",
+    "backend": "npm --prefix backend start",
+    "backend:dev": "npm --prefix backend run dev",
+    "backend:build": "npm --prefix backend run build",
     "ui:install": "npm --prefix ui install",
     "ui:dev": "npm --prefix ui run dev",
     "ui:build": "npm --prefix ui run build"

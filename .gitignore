@@ -3,3 +3,4 @@ tsp-output/
 .DS_Store
 ui/dist/
 ui/.env
+backend/dist/

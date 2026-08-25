@@ -9,6 +9,7 @@
 
 ```bash
 npm install
+npm run backend:install
 npm run ui:install
 ```
 
@@ -28,17 +29,30 @@ npm run ui:dev
 
 ## Запуск с backend
 
-По умолчанию UI отправляет запросы на `http://localhost:4010`. Для другого адреса создайте `ui/.env`:
+В первом терминале запустите TypeScript-бэкенд на `http://localhost:4010`:
+
+```bash
+npm run backend
+```
+
+Во втором терминале запустите UI:
+
+```bash
+npm run ui:dev
+```
+
+Бэкенд хранит данные в памяти и сбрасывает их после перезапуска. Для каждого типа встречи он автоматически создаёт доступные слоты на 14 дней. По умолчанию UI отправляет запросы на `http://localhost:4010`. Для другого адреса создайте `ui/.env`:
 
 ```dotenv
 VITE_API_BASE_URL=http://localhost:4010
 ```
 
-Backend должен реализовывать контракт из `main.tsp` и разрешать CORS для dev-сервера `http://localhost:3000`.
+Бэкенд реализует контракт из `main.tsp` и разрешает CORS для отдельного фронтенд-клиента.
 
 ## Проверка сборки
 
 ```bash
 npm run compile
+npm run backend:build
 npm run ui:build
 ```
