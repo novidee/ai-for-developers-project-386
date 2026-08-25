@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/novidee/ai-for-developers-project-386/compare/v1.0.0...v1.1.0) (2026-08-25)
+
+
+### Features
+
+* add Docker deployment ([511493f](https://github.com/novidee/ai-for-developers-project-386/commit/511493fd41bfb20256135a27ef97046a22a0ee93))
+* add Docker deployment ([18bbb38](https://github.com/novidee/ai-for-developers-project-386/commit/18bbb387a72dbad6a695cdf0c9dadfb1b8dba1a5))
+
 ## 1.0.0 (2026-08-25)
 
 
