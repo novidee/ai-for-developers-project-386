@@ -1,0 +1,15 @@
+.git
+.github
+.agents
+.codex
+.DS_Store
+node_modules
+**/node_modules
+backend/dist
+ui/dist
+tsp-output
+playwright-report
+test-results
+blob-report
+example
+*.log

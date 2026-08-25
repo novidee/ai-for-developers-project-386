@@ -57,6 +57,31 @@ npm run backend:build
 npm run ui:build
 ```
 
+## Docker
+
+Production-образ собирает UI и TypeScript-бэкенд, после чего Express раздаёт их с одного порта. Приложение читает порт из переменной окружения `PORT`.
+
+Соберите образ:
+
+```bash
+docker build -t calendar-booking .
+```
+
+Запустите его на произвольном порту, например `8080`:
+
+```bash
+docker run --rm -e PORT=8080 -p 8080:8080 calendar-booking
+```
+
+После запуска приложение доступно по адресу <http://localhost:8080>.
+
+## Деплой на Render
+
+Конфигурация Docker web service описана в [`render.yaml`](./render.yaml). Создайте в Render новый Blueprint из этого репозитория: платформа соберёт корневой `Dockerfile`, передаст приложению переменную `PORT` и будет проверять доступность сервиса по маршруту `/`.
+
+Приложение опубликовано по адресу:
+<https://ai-for-developers-project-386-m9am.onrender.com>
+
 ## Интеграционные сценарии
 
 Playwright-проверки фиксируют три пользовательских сценария:
